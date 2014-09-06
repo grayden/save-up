@@ -9,5 +9,13 @@
             "name": "Grayden Smith",
             "email": "grayden@tech-vision.ca"
         }
-    ]
+    ],
+    "require-dev": {
+        "phpspec/phpspec": "2.0.1"
+    },
+    "autoload": {
+      "psr-4": {
+        "SaveUp\\": "src/SaveUp"
+      }
+    }
 }
