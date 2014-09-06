@@ -1,0 +1,13 @@
+{
+    "name": "grayden/save-up",
+    "require": {
+        "aws/aws-sdk-php": "2.6.15"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Grayden Smith",
+            "email": "grayden@tech-vision.ca"
+        }
+    ]
+}
