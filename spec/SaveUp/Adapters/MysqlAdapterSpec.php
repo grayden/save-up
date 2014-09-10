@@ -5,11 +5,19 @@ namespace spec\SaveUp\Adapters;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
+
 class MysqlAdapterSpec extends ObjectBehavior
 {
     function let()
     {
-        $this->beConstructedWith("save_up_test_db", "save_up", "save_up", "localhost", 3306);
+        $_CONFIG = require 'save-up.test.config.php';
+        $this->beConstructedWith(
+            $_CONFIG['responsibilities'][0]['database'],
+            $_CONFIG['responsibilities'][0]['username'],
+            $_CONFIG['responsibilities'][0]['password'],
+            $_CONFIG['responsibilities'][0]['host'],
+            $_CONFIG['responsibilities'][0]['port']
+        );
         $this->shouldHaveType('SaveUp\Adapters\MysqlAdapter');
     }
 

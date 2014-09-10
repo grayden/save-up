@@ -2,3 +2,5 @@ vendor
 notes.txt
 test-config.json
 *.swp
+save-up.config.php
+save-up.test.config.php
