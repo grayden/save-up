@@ -14,7 +14,6 @@ class MysqlBackup extends Job
 
     function __construct($bucket, $db, $username, $password, $host = "localhost", $port = 3306)
     {
-        $_CONFIG = include 'save-up.test.config.php';
         $this->database = new MysqlAdapter(
             $db,
             $username,
