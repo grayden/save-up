@@ -12,6 +12,7 @@ class MysqlBackupSpec extends ObjectBehavior
         $_CONFIG = require 'save-up.test.config.php';
 
         $this->beConstructedWith(
+            'test-bucket',
             $_CONFIG['s3']['bucket'],
             $_CONFIG['resposiblities'][0]['database'],
             $_CONFIG['resposiblities'][0]['username'],

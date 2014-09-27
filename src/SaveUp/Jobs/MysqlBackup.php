@@ -3,6 +3,7 @@
 use SaveUp\Jobs\Job;
 use SaveUp\Adapters\MysqlAdapter;
 use SaveUp\Adapters\S3Adapter;
+use SaveUp\Namers\MysqlNamer;
 
 class MysqlBackup extends Job
 {
@@ -12,17 +13,19 @@ class MysqlBackup extends Job
 
     private $backupContents;
 
-    function __construct($bucket, $db, $username, $password, $host = "localhost", $port = 3306)
+    function __construct($baseName, $bucket, $db, $username, $password, $host = "localhost", $port = 3306)
     {
         $this->database = new MysqlAdapter(
             $db,
             $username,
             $password,
             $host,
-            $port    
+            $port
         );
 
         $this->s3Adapter = new S3Adapter($bucket);
+
+        $this->namer = new MysqlNamer($baseName);
     }
 
     public function backup()
@@ -44,6 +47,6 @@ class MysqlBackup extends Job
 
     private function send()
     {
-        $this->s3Adapter->save('mysql_backup', $this->backupContents);
+        $this->s3Adapter->save($this->namer->name(), $this->backupContents);
     }
 }
