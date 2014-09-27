@@ -6,7 +6,7 @@ class MysqlNamer implements NamerInterface
 
     function __construct($base)
     {
-        $this->base = $base
+        $this->base = $base;
     }
 
     public function name()
