@@ -13,7 +13,7 @@ class FileAdapter implements SourceAdapter
 
     public function toBackup()
     {
-        shell_exec("zip -R save_up_archive.zip $this->path");
+        shell_exec("zip -r save_up_archive.zip $this->path");
 
         return "save_up_archive.zip";
     }
