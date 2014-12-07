@@ -27,4 +27,13 @@ class S3Adapter
             'Body' => $content
         ));
     }
+
+    public function upload($name, $location)
+    {
+        $this->client->putObject(array(
+            'Bucket' => $this->bucket,
+            'Key' => $name,
+            'SourceFile' => $location
+        ));
+    }
 }

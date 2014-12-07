@@ -1,4 +1,6 @@
-<?php namespace SaveUp\Namers;
+<?php 
+
+namespace SaveUp\Namers;
 
 interface NamerInterface
 {

@@ -4,6 +4,9 @@
         "aws/aws-sdk-php": "2.6.15",
         "ext-mysqli": "0.1"
     },
+    "require-dev": {
+        "mockery/mockery": "0.9.2"
+    },
     "license": "MIT",
     "authors": [
         {

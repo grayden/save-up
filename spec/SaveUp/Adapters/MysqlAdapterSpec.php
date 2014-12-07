@@ -14,13 +14,10 @@ class MysqlAdapterSpec extends ObjectBehavior
         $this->beConstructedWith(
             $_CONFIG['responsibilities'][0]['database'],
             $_CONFIG['responsibilities'][0]['username'],
-            $_CONFIG['responsibilities'][0]['password'],
-            $_CONFIG['responsibilities'][0]['host'],
-            $_CONFIG['responsibilities'][0]['port']
+            $_CONFIG['responsibilities'][0]['password']
         );
         $this->shouldHaveType('SaveUp\Adapters\MysqlAdapter');
     }
-
 
     function it_should_be_able_to_connect() 
     {

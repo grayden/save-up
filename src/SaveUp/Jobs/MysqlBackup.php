@@ -13,19 +13,11 @@ class MysqlBackup extends Job
 
     private $backupContents;
 
-    function __construct($baseName, $bucket, $db, $username, $password, $host = "localhost", $port = 3306)
+    function __construct(NamerInterface $namer, S3Adapter $s3, MysqlAdapter $mysql)
     {
-        $this->database = new MysqlAdapter(
-            $db,
-            $username,
-            $password,
-            $host,
-            $port
-        );
-
-        $this->s3Adapter = new S3Adapter($bucket);
-
-        $this->namer = new MysqlNamer($baseName);
+        $this->database = $mysql;
+        $this->s3Adapter = $s3;
+        $this->namer = $namer;
     }
 
     public function backup()

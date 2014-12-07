@@ -2,7 +2,7 @@
 
 namespace SaveUp\Adapters;
 
-class MysqlAdapter
+class MysqlAdapter implements SourceAdapter
 {
     private $db;
 
@@ -16,7 +16,7 @@ class MysqlAdapter
 
     private $connection;
 
-    function __construct($db, $username, $password, $host, $port)
+    function __construct($db, $username, $password, $host = 'localhost', $port = 3306)
     {
         $this->db = $db; 
         $this->username = $username; 
@@ -44,6 +44,18 @@ class MysqlAdapter
     public function dump()
     {
         return shell_exec("mysqldump -u $this->username -p$this->password $this->db");
+    }
+
+    public function toBackup()
+    {
+        file_put_contents("save_up_dump.sql", $this->dump());
+
+        return "save_up_dump.sql";
+    }
+
+    public function clean()
+    {
+        shell_exec("rm save_up_dump.sql");
     }
 
     public function hasTable($table)

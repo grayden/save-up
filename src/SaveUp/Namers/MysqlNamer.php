@@ -11,6 +11,6 @@ class MysqlNamer implements NamerInterface
 
     public function name()
     {
-        return date("Y-m-d") . "-" . $this->base . ".sql";
+        return date("Y-m-d_H-i-s") . "-" . $this->base . ".sql";
     }
 }
