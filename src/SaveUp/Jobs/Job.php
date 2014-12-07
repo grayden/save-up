@@ -24,7 +24,7 @@ class Job
     public function backup() 
     {
         $location = $this->source->toBackup();
-        $this->s3->save($this->namer->name(), $location);
+        $this->s3->upload($this->namer->name(), $location);
         $this->source->clean();
     }
 }
